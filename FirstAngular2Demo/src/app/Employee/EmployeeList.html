@@ -1,0 +1,31 @@
+﻿<table>
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Salary
+            </th>
+            <th>
+                Age
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp  of employees">
+            <td>
+                <a [routerLink]="['/Employees',emp.EmpCode]">
+                    {{emp.EmpName}}
+                </a>
+            </td>
+            <td>{{emp.Salary}}</td>
+            <td>{{emp.Age}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <input type="text" [(ngModel)]="EmpName" />
+    <button (click)="addEmployee()">Click me!</button>
+</div>
