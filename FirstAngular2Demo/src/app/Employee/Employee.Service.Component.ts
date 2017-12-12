@@ -11,4 +11,5 @@ export class EmployeeServiceComponent{
             { Age: 10, EmpCode: 2, Gender: 'Male', EmpName: 'durg', Salary: 1100 },
             { Age: 10, EmpCode: 3, Gender: 'Male', EmpName: 'durg', Salary: 1100 },]
     }
+
 }
