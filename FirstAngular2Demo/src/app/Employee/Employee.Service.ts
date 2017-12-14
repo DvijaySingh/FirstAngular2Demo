@@ -8,7 +8,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class EmployeeService {
-
+    public headers: Headers;
+    employeedata: IEmployee;
     constructor(private _http: Http)
     {
 
@@ -22,17 +23,30 @@ export class EmployeeService {
         return this._http.get("http://localhost:52827/api/Employee/" + empCode)
             .map((response: Response) => <IEmployee>response.json())
     }
-    AddEmployee(employee: IEmployee): Observable<IEmployee[]> {
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    AddEmployee(employee: IEmployee): Observable<any> {
+        //let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let EmpCode = employee.EmpCode;
         let EmpName = employee.EmpName;
         let Age = employee.Age;
         let Gender = employee.Gender;
         let Salary = employee.Salary;
         //let body = this.serializeObj(employee);
+        //let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        //let options = new RequestOptions({ headers: headers });
+        //this.headers = new Headers();
+        //this.headers.append('Content-Type', 'application/json');
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this._http.post("http://localhost:52827/api/Employee",employee.EmpName, options)
-            .map((response: Response) => <IEmployee[]>response.json())
+       // let options = new RequestOptions({ headers: headers });
+        let body = JSON.stringify(employee);
+        //this.employeedata = { EmpCode: employee.EmpCode, EmpName: employee.EmpName, Age: employee.Age, Gender: employee.Gender, Salary: employee.Salary };
+        //let data = JSON.stringify(this.employeedata);
+        //return this._http.post("http://localhost:52827/api/Employee", body, { headers: headers })
+        //    .map((response: Response) => response.json())
+
+        return this._http.post("http://localhost:52827/api/Employee", body, { headers: headers })
+            .map((response: Response) => response.json())           
         
     }
     private serializeObj(obj:any) {

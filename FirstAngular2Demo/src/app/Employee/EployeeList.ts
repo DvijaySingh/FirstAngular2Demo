@@ -14,7 +14,7 @@ import { Employee } from './Employee'
 export class EmployeeListComponet implements OnInit {
 
     employees: IEmployee[];
-    EmpCode: number=23;
+    EmpCode: number=0;
     EmpName: string='durgv';
     Age: number=12;
     Salary: number=13243;

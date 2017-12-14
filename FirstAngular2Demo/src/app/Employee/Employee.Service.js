@@ -26,15 +26,26 @@ var EmployeeService = (function () {
             .map(function (response) { return response.json(); });
     };
     EmployeeService.prototype.AddEmployee = function (employee) {
-        var headers = new http_2.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        //let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var EmpCode = employee.EmpCode;
         var EmpName = employee.EmpName;
         var Age = employee.Age;
         var Gender = employee.Gender;
         var Salary = employee.Salary;
         //let body = this.serializeObj(employee);
+        //let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        //let options = new RequestOptions({ headers: headers });
+        //this.headers = new Headers();
+        //this.headers.append('Content-Type', 'application/json');
+        var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
         var options = new http_2.RequestOptions({ headers: headers });
-        return this._http.post("http://localhost:52827/api/Employee", employee.EmpName, options)
+        // let options = new RequestOptions({ headers: headers });
+        var body = JSON.stringify(employee);
+        //this.employeedata = { EmpCode: employee.EmpCode, EmpName: employee.EmpName, Age: employee.Age, Gender: employee.Gender, Salary: employee.Salary };
+        //let data = JSON.stringify(this.employeedata);
+        //return this._http.post("http://localhost:52827/api/Employee", body, { headers: headers })
+        //    .map((response: Response) => response.json())
+        return this._http.post("http://localhost:52827/api/Employee", body, { headers: headers })
             .map(function (response) { return response.json(); });
     };
     EmployeeService.prototype.serializeObj = function (obj) {

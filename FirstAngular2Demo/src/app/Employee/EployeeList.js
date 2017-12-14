@@ -15,7 +15,7 @@ var Employee_1 = require("./Employee");
 var EmployeeListComponet = (function () {
     function EmployeeListComponet(_empService) {
         this._empService = _empService;
-        this.EmpCode = 23;
+        this.EmpCode = 0;
         this.EmpName = 'durgv';
         this.Age = 12;
         this.Salary = 13243;
