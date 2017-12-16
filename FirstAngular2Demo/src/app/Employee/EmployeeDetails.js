@@ -21,6 +21,7 @@ var EmployeeDetailsComponent = (function () {
         var _this = this;
         var empcode = this._activatedRoute.snapshot.params['EmpCode'];
         this._empServive.getEmployeeByCode(empcode).subscribe(function (empdata) { return _this.employee = empdata; }, function (Error) { return console.log(Error); });
+        console.log(this.employee);
     };
     return EmployeeDetailsComponent;
 }());

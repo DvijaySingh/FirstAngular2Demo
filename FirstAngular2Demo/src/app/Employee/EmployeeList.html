@@ -1,4 +1,82 @@
-﻿<table>
+﻿
+<link href="../CSS/Employee.css" rel="stylesheet" />
+<div class="col-md-12"*ngIf="! employeeData">
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <input type="hidden" [(ngModel)]="EmpCode" />
+            Employee Name
+            <input type="text" class="form-control" [(ngModel)]="EmpName" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            Age
+            <input type="number"  class="form-control" [(ngModel)]="Age" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            Salary
+            <input type="number" class="form-control" [(ngModel)]="Salary" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            Gender
+            <input type="text" class="form-control" [(ngModel)]="Gender" />
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+            <button class=" btn btn-group" (click)="addEmployee()">Save</button>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-md-12" *ngIf="employeeData">
+
+    <div class="col-md-3">
+        <div class="form-group">
+            <input type="hidden" [(ngModel)]="EmpCode" />
+            Employee Name
+            <input type="text" class="form-control" [(ngModel)]="employeeData.EmpName" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            Age
+            <input type="number" class="form-control" [(ngModel)]="employeeData.Age" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            Salary
+            <input type="number" class="form-control" [(ngModel)]="employeeData.Salary" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            Gender
+            <input type="text" class="form-control" [(ngModel)]="employeeData.Gender" />
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+            <button class=" btn btn-group" (click)="addEmployee()">Update</button>
+        </div>
+
+    </div>
+
+</div>
+<br />
+<table>
     <thead>
         <tr>
             <th>
@@ -10,10 +88,12 @@
             <th>
                 Age
             </th>
+            <th>Gender</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let emp  of employees">
+        <tr *ngFor="let emp  of  employees">
             <td>
                 <a [routerLink]="['/Employees',emp.EmpCode]">
                     {{emp.EmpName}}
@@ -21,11 +101,15 @@
             </td>
             <td>{{emp.Salary}}</td>
             <td>{{emp.Age}}</td>
+            <td>{{emp.Gender}}</td>
+            <td><button (click)="getEmployee(emp.EmpCode)">Edit</button>|<button (click)="DeleteEmployee(emp.EmpCode)">Delete</button></td>
+        </tr>
+        <tr *ngIf="!employees || employees.length==0">
+            <td colspan="5">
+                No data!
+            </td>
         </tr>
     </tbody>
 </table>
+<br />
 
-<div>
-    <input type="text" [(ngModel)]="EmpName" />
-    <button (click)="addEmployee()">Click me!</button>
-</div>

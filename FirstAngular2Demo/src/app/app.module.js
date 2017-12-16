@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
+//import { DataTableModule } from 'angular2-datatable';
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
 var app_component_1 = require("./app.component");
@@ -32,7 +33,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, router_1.RouterModule.forRoot(AppRotes, { useHash: true })],
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, router_1.RouterModule.forRoot(AppRotes)],
         declarations: [app_component_1.AppComponent, EmployeeDetails_1.EmployeeDetailsComponent, EployeeList_1.EmployeeListComponet, Home_Component_1.HomeComponent, PageNotFoundComponent_1.PageNotFoundComponent],
         providers: [Employee_Service_1.EmployeeService],
         bootstrap: [app_component_1.AppComponent]

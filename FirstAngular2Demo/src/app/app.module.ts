@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+//import { DataTableModule } from 'angular2-datatable';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -21,7 +22,7 @@ const AppRotes: Routes = [
     { path: '**', component: PageNotFoundComponent }
 ]
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(AppRotes, { useHash: true })],
+    imports: [BrowserModule,  FormsModule, HttpModule,  RouterModule.forRoot(AppRotes)],//, { useHash: true }
     declarations: [AppComponent, EmployeeDetailsComponent, EmployeeListComponet, HomeComponent, PageNotFoundComponent],
     providers: [EmployeeService],
     bootstrap: [AppComponent]

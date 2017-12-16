@@ -17,5 +17,6 @@ export class EmployeeDetailsComponent implements OnInit {
             (empdata) => this.employee = empdata,
             (Error)=>console.log(Error)
         )
+        console.log(this.employee);
     }
 }

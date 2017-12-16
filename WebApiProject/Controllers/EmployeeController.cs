@@ -37,5 +37,31 @@ namespace WebApiProject.Controllers
                 return dbcontext.Employees.ToList();
             }
         }
+        public void Delete(long code)
+        {
+            using (var dbcontext = new Angular2DemoEntities())
+            {
+                var emaployee = dbcontext.Employees.Where(m => m.EmpCode == code).FirstOrDefault();
+                dbcontext.Employees.Remove(emaployee);
+                dbcontext.SaveChanges();
+               
+            }
+        }
+
+        [HttpPut]
+        [ActionName("UpdateEmployee")]
+        public void UpdateEmployee([FromBody]  Employee employee)
+        {
+            using (var dbcontext = new Angular2DemoEntities())
+            {
+                var currentemployee = dbcontext.Employees.Where(m => m.EmpCode == employee.EmpCode).FirstOrDefault();
+                currentemployee.EmpName = employee.EmpName;
+                currentemployee.Gender = employee.Gender;
+                currentemployee.Salary = employee.Salary;
+                currentemployee.Age = employee.Age;
+                dbcontext.SaveChanges();
+               
+            }
+        }
     }
 }

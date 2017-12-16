@@ -1,7 +1,9 @@
 ﻿
-th{
-    border:1px solid;
+th {
+    border: 1px solid;
+    width: 200px;
 }
 td{
     border:1px solid;
+    width:200px;
 }

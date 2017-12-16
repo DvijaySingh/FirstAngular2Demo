@@ -12,14 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var Employee_Service_1 = require("./Employee.Service");
 var Employee_1 = require("./Employee");
+//import { Router, ActivatedRoute } from '@angular/router';
 var EmployeeListComponet = (function () {
     function EmployeeListComponet(_empService) {
         this._empService = _empService;
-        this.EmpCode = 0;
-        this.EmpName = 'durgv';
-        this.Age = 12;
-        this.Salary = 13243;
-        this.Gender = 'Male';
         //this.employees = _empService.getEmployee();
     }
     //employees:any[]  = [
@@ -35,7 +31,25 @@ var EmployeeListComponet = (function () {
     EmployeeListComponet.prototype.addEmployee = function () {
         this._empService.AddEmployee(new Employee_1.Employee(this.EmpCode, this.EmpName, this.Age, this.Salary, this.Gender))
             .subscribe(function (response) {
-            console.log(response);
+            location.reload();
+        });
+    };
+    EmployeeListComponet.prototype.getEmployee = function (EmpCode) {
+        var _this = this;
+        this._empService.getEmployeeByCode(EmpCode).subscribe(function (empdata) { return _this.employeeData = empdata; });
+        //this._empService.getEmployeeByCode(EmpCode).subscribe((empdata) => this.employeeData = empdata);
+        //console.log(this.employeeData);
+        //this.EmpName = this.employeeData.EmpName;
+    };
+    EmployeeListComponet.prototype.DeleteEmployee = function (EmpCode) {
+        var _this = this;
+        this._empService.DeleteEmployee(EmpCode).subscribe(function (empdata) { return _this.employeeData = empdata; });
+        location.reload();
+    };
+    EmployeeListComponet.prototype.UpdateEmployee = function () {
+        this._empService.updateEmployee(new Employee_1.Employee(this.EmpCode, this.EmpName, this.Age, this.Salary, this.Gender))
+            .subscribe(function (response) {
+            location.reload();
         });
     };
     return EmployeeListComponet;

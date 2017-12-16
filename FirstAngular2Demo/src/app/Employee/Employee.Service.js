@@ -25,34 +25,29 @@ var EmployeeService = (function () {
         return this._http.get("http://localhost:52827/api/Employee/" + empCode)
             .map(function (response) { return response.json(); });
     };
+    EmployeeService.prototype.DeleteEmployee = function (empCode) {
+        return this._http.delete("http://localhost:52827/api/Employee/" + empCode)
+            .map(function (response) { return response.json(); });
+    };
     EmployeeService.prototype.AddEmployee = function (employee) {
         //let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        var EmpCode = employee.EmpCode;
-        var EmpName = employee.EmpName;
-        var Age = employee.Age;
-        var Gender = employee.Gender;
-        var Salary = employee.Salary;
-        //let body = this.serializeObj(employee);
-        //let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        //let options = new RequestOptions({ headers: headers });
-        //this.headers = new Headers();
-        //this.headers.append('Content-Type', 'application/json');
+        //let EmpCode = employee.EmpCode;
+        //let EmpName = employee.EmpName;
+        //let Age = employee.Age;
+        //let Gender = employee.Gender;
+        //let Salary = employee.Salary;
         var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
         var options = new http_2.RequestOptions({ headers: headers });
-        // let options = new RequestOptions({ headers: headers });
         var body = JSON.stringify(employee);
-        //this.employeedata = { EmpCode: employee.EmpCode, EmpName: employee.EmpName, Age: employee.Age, Gender: employee.Gender, Salary: employee.Salary };
-        //let data = JSON.stringify(this.employeedata);
-        //return this._http.post("http://localhost:52827/api/Employee", body, { headers: headers })
-        //    .map((response: Response) => response.json())
         return this._http.post("http://localhost:52827/api/Employee", body, { headers: headers })
             .map(function (response) { return response.json(); });
     };
-    EmployeeService.prototype.serializeObj = function (obj) {
-        var result = [];
-        for (var property in obj)
-            result.push(encodeURIComponent(property) + "=" + encodeURIComponent(obj[property]));
-        return result.join("&");
+    EmployeeService.prototype.updateEmployee = function (employee) {
+        var headers = new http_2.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_2.RequestOptions({ headers: headers });
+        var body = JSON.stringify(employee);
+        return this._http.put("http://localhost:52827/api/Employee/UpdateEmployee", body, { headers: headers })
+            .map(function (response) { return response.json(); });
     };
     return EmployeeService;
 }());

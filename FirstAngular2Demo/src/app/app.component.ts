@@ -7,8 +7,10 @@ import { Component } from '@angular/core'
 <li routerLinkActive="active"> <a routerLink="Home">Home</a></li>
 <li routerLinkActive="active"> <a routerLink="Employees">Employee</a></li>
 </ul>
-
+<br/> 
+<div>
 <router-outlet></router-outlet>
+</div>
   </div>
   `
 })
