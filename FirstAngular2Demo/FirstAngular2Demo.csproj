@@ -236,6 +236,7 @@
     <TypeScriptCompile Include="src\app\Employee\IEmployee.ts" />
     <TypeScriptCompile Include="src\app\Event\EventExample.ts" />
     <TypeScriptCompile Include="src\app\Home\Home.Component.ts" />
+    <TypeScriptCompile Include="src\app\Gender.ts" />
     <TypeScriptCompile Include="src\app\PageNotFoundComponent.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>

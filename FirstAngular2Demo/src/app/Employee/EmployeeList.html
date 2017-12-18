@@ -1,6 +1,6 @@
 ﻿
 <link href="../CSS/Employee.css" rel="stylesheet" />
-<div class="col-md-12"*ngIf="! employeeData">
+<div class="col-md-12" *ngIf="! employeeData">
 
     <div class="col-md-3">
         <div class="form-group">
@@ -12,7 +12,7 @@
     <div class="col-md-3">
         <div class="form-group">
             Age
-            <input type="number"  class="form-control" [(ngModel)]="Age" />
+            <input type="number" class="form-control" [(ngModel)]="Age" />
         </div>
     </div>
     <div class="col-md-3">
@@ -24,7 +24,12 @@
     <div class="col-md-3">
         <div class="form-group">
             Gender
-            <input type="text" class="form-control" [(ngModel)]="Gender" />
+            <!--<input type="text" class="form-control" [(ngModel)]="Gender" />-->
+            <select (change)="onSelect($event.target.value)" [(ngModel)]="selectedGender.id" class="form-control">
+                <option *ngFor="let gender of Allgender" value={{gender.id}}>
+                    {{gender.name}}
+                </option>
+            </select>
         </div>
     </div>
 
@@ -62,14 +67,19 @@
     <div class="col-md-3">
         <div class="form-group">
             Gender
-            <input type="text" class="form-control" [(ngModel)]="employeeData.Gender" />
+            <!--<input type="text" class="form-control" [(ngModel)]="employeeData.Gender" />-->
+            <select  [(ngModel)]="employeeData.Gender" (change)="onSelect($event.target.value)"   class="form-control">
+                <option *ngFor="let gender of Allgender" value={{gender.name}}>
+                    {{gender.name}}
+                </option>
+            </select>
         </div>
     </div>
 
     <div class="col-md-12">
         <div class="col-md-10"></div>
         <div class="col-md-2">
-            <button class=" btn btn-group" (click)="addEmployee()">Update</button>
+            <button class=" btn btn-group" (click)="UpdateEmployee()">Update</button>
         </div>
 
     </div>

@@ -10,12 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var Gender_1 = require("../Gender");
 var Employee_Service_1 = require("./Employee.Service");
 var Employee_1 = require("./Employee");
 //import { Router, ActivatedRoute } from '@angular/router';
 var EmployeeListComponet = (function () {
     function EmployeeListComponet(_empService) {
         this._empService = _empService;
+        this.selectedGender = new Gender_1.Gender(1, 'Male');
+        this.Allgender = [
+            new Gender_1.Gender(1, 'Male'),
+            new Gender_1.Gender(2, 'FeMale'),
+        ];
         //this.employees = _empService.getEmployee();
     }
     //employees:any[]  = [
@@ -29,7 +35,7 @@ var EmployeeListComponet = (function () {
             .subscribe(function (empdata) { return _this.employees = empdata; });
     };
     EmployeeListComponet.prototype.addEmployee = function () {
-        this._empService.AddEmployee(new Employee_1.Employee(this.EmpCode, this.EmpName, this.Age, this.Salary, this.Gender))
+        this._empService.AddEmployee(new Employee_1.Employee(this.EmpCode, this.EmpName, this.Age, this.Salary, this.selectedGender.name))
             .subscribe(function (response) {
             location.reload();
         });
@@ -47,10 +53,20 @@ var EmployeeListComponet = (function () {
         location.reload();
     };
     EmployeeListComponet.prototype.UpdateEmployee = function () {
-        this._empService.updateEmployee(new Employee_1.Employee(this.EmpCode, this.EmpName, this.Age, this.Salary, this.Gender))
+        this._empService.updateEmployee(new Employee_1.Employee(this.employeeData.EmpCode, this.employeeData.EmpName, this.employeeData.Age, this.employeeData.Salary, this.employeeData.Gender))
             .subscribe(function (response) {
             location.reload();
         });
+    };
+    //GetEmployee(emplo)
+    EmployeeListComponet.prototype.onSelect = function (gender) {
+        this.selectedGender = null;
+        for (var i = 0; i < this.Allgender.length; i++) {
+            if (this.Allgender[i].id == gender) {
+                this.selectedGender = this.Allgender[i];
+            }
+        }
+        console.log(gender);
     };
     return EmployeeListComponet;
 }());
