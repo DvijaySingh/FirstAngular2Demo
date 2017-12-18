@@ -2,17 +2,7 @@ import { Component } from '@angular/core'
 
 @Component({
   selector: 'my-app',
-  template: `<div>
-  <ul class=" nav nav-tabs">
-<li routerLinkActive="active"> <a routerLink="Home">Home</a></li>
-<li routerLinkActive="active"> <a routerLink="Employees">Employee</a></li>
-</ul>
-<br/> 
-<div>
-<router-outlet></router-outlet>
-</div>
-  </div>
-  `
+  templateUrl: "./Layout.html"
 })
 export class AppComponent  {
     usetext: string = "tsts";

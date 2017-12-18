@@ -37,24 +37,31 @@ var EmployeeListComponet = (function () {
     EmployeeListComponet.prototype.addEmployee = function () {
         this._empService.AddEmployee(new Employee_1.Employee(this.EmpCode, this.EmpName, this.Age, this.Salary, this.selectedGender.name))
             .subscribe(function (response) {
+            alert("Save successfully !");
             location.reload();
         });
     };
     EmployeeListComponet.prototype.getEmployee = function (EmpCode) {
         var _this = this;
-        this._empService.getEmployeeByCode(EmpCode).subscribe(function (empdata) { return _this.employeeData = empdata; });
+        this._empService.getEmployeeByCode(EmpCode).subscribe(function (empdata) {
+            _this.employeeData = empdata;
+        });
         //this._empService.getEmployeeByCode(EmpCode).subscribe((empdata) => this.employeeData = empdata);
         //console.log(this.employeeData);
         //this.EmpName = this.employeeData.EmpName;
     };
     EmployeeListComponet.prototype.DeleteEmployee = function (EmpCode) {
         var _this = this;
-        this._empService.DeleteEmployee(EmpCode).subscribe(function (empdata) { return _this.employeeData = empdata; });
-        location.reload();
+        if (confirm("Are you sure to delete ")) {
+            this._empService.DeleteEmployee(EmpCode).subscribe(function (empdata) { return _this.employeeData = empdata; });
+            alert("Deleted successfully !");
+            location.reload();
+        }
     };
     EmployeeListComponet.prototype.UpdateEmployee = function () {
         this._empService.updateEmployee(new Employee_1.Employee(this.employeeData.EmpCode, this.employeeData.EmpName, this.employeeData.Age, this.employeeData.Salary, this.employeeData.Gender))
             .subscribe(function (response) {
+            alert("Update successfully !");
             location.reload();
         });
     };

@@ -46,14 +46,17 @@ export class EmployeeListComponet implements OnInit {
     addEmployee() {
         this._empService.AddEmployee(new Employee(this.EmpCode, this.EmpName, this.Age, this.Salary, this.selectedGender.name))
             .subscribe((response) => {
+                alert("Save successfully !");
                 location.reload();
             });
     }
     getEmployee(EmpCode: string)
     {
         this._empService.getEmployeeByCode(EmpCode).subscribe(
-            (empdata) =>   this.employeeData= empdata 
-
+            (empdata) => {
+                this.employeeData = empdata
+               
+            }
         )
        
         //this._empService.getEmployeeByCode(EmpCode).subscribe((empdata) => this.employeeData = empdata);
@@ -61,13 +64,17 @@ export class EmployeeListComponet implements OnInit {
         //this.EmpName = this.employeeData.EmpName;
     }
     DeleteEmployee(EmpCode: string) {
-        this._empService.DeleteEmployee(EmpCode).subscribe((empdata) => this.employeeData = empdata);
-        location.reload();
+        if (confirm("Are you sure to delete ")) {
+            this._empService.DeleteEmployee(EmpCode).subscribe((empdata) => this.employeeData = empdata);
+            alert("Deleted successfully !");
+            location.reload();
+        }
     }
     UpdateEmployee()
     {
         this._empService.updateEmployee(new Employee(this.employeeData.EmpCode, this.employeeData.EmpName, this.employeeData.Age, this.employeeData.Salary, this.employeeData.Gender))
             .subscribe((response) => {
+                alert("Update successfully !");
                 location.reload();
             });
     }

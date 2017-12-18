@@ -207,6 +207,7 @@
     <Content Include="src\app\Employee\EmployeeDetails.html" />
     <Content Include="src\app\Employee\EmployeeList.html" />
     <Content Include="src\app\Event\EventExample.html" />
+    <Content Include="src\app\Layout.html" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
     <Content Include="src\main.js" />
